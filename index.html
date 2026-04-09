@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalshi Coachella Chart</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h2>Kalshi Coachella Market Chart</h2>
+<canvas id="kalshiChart" style="width:100%;max-width:700px;height:400px;"></canvas>
+
+<script>
+// Sample data for demonstration (replace with server-side fetched data if needed)
+const labels = ["Jan 1","Jan 2","Jan 3","Jan 4","Jan 5"];
+const prices = [0.42,0.45,0.48,0.44,0.50];
+
+const ctx = document.getElementById('kalshiChart').getContext('2d');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Market Price ($)',
+            data: prices,
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0,0,255,0.1)',
+            fill: true,
+            tension: 0.2
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: { title: { display: true, text: 'Date' } },
+            y: { title: { display: true, text: 'Price ($)' } }
+        }
+    }
+});
+</script>
+</body>
+</html>
